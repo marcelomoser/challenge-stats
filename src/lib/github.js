@@ -4,7 +4,7 @@ export const fetchPullRequestByLabel = label => {
   return axios({
     method: 'post',
     headers: {
-      Authorization: `token e0c8ebe25d1d10944adb77b2f8967a5deeb56caf`
+      Authorization: `token ${process.env.VUE_APP_GH_TOKEN || ''}`
     },
     url: 'https://api.github.com/graphql',
     data: {
@@ -43,5 +43,5 @@ export const fetchPullRequestByLabel = label => {
       }
       `
     }
-  }).then(response => response.data.data)
+  }).then(response => response.data)
 }

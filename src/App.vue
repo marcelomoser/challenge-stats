@@ -28,14 +28,18 @@ export default {
     try {
       for(const challenge of challengesJson){
         const response = await fetchPullRequestByLabel(challenge['pull_request_label'])
+
+        if('message' in response)
+          throw Error(response.message)
+
         array.push({
           ...challenge,
-          ...response
+          ...response.data
         })
       }
       this.status.message = ''
     } catch(err){
-      this.status.pull_request_labelmessage = `Falha ao buscar informações dos eventos: ${err}`
+      this.status.message = `Falha ao buscar informações dos eventos: ${err}`
     }
     this.challenges = array
     this.status.loaded = true
