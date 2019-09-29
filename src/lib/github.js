@@ -18,7 +18,6 @@ export const fetchPullRequestByLabel = label => {
               title
               createdAt
               permalink
-              changedFiles
               author {
                 login
                 url
