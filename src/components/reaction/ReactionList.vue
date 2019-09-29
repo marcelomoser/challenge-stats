@@ -1,18 +1,19 @@
 <template>
   <div v-if="reactions && reactions.totalCount > 0">
-    <p>Esta pull request recebeu {{ reactions.totalCount }} votos </p>
+    <p class="total-reactions">Este pull request recebeu {{ votes }}</p>
+    <p class="unique-reactions">Votantes únicos: {{ uniqueReactions.length }}</p>
     <div>
-      <p>Votantes:</p>
       <Reaction
         v-for="reaction in reactions.nodes"
         :key="reaction.id"
         :reaction="reaction" />
     </div>
   </div>
-  <div v-else>Ninguém votou nessa pull request ainda</div>
+  <div v-else>Ninguém votou nesse pull request ainda</div>
 </template>
 
 <script>
+import { uniqueReactionsByUserLogin } from '@/lib/helpers'
 import Reaction from '@/components/reaction/Reaction'
 
 export default {
@@ -23,6 +24,15 @@ export default {
     reactions: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    uniqueReactions(){
+      return uniqueReactionsByUserLogin(this.reactions)
+    },
+    votes(){
+      const reactions = this.reactions.totalCount
+      return `${reactions} vot${reactions === 1 ? 'o': 'os'}`
     }
   }
 }
