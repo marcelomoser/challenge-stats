@@ -41,7 +41,7 @@ export default {
     } catch(err){
       this.status.message = `Falha ao buscar informações dos eventos: ${err}`
     }
-    this.challenges = array
+    this.challenges = array.reverse()
     this.status.loaded = true
   }
 }
