@@ -1,17 +1,13 @@
+<style src="./winner.styl" lang="stylus" scoped></style>
+
 <template>
-  <div>
-    <p>Posição: {{ winner.position }}</p>
-    <a :href="'https://github.com/' + winner.login">@{{ winner.login }}</a>
-  </div>
+  <a :data-position="winner.position" :href="'https://github.com/' + winner.login">@{{ winner.login }}</a>
 </template>
 
 <script>
 export default {
   props: {
-    winner: {
-      type: Object,
-      required: true
-    }
+    winner: { type: Object, required: true }
   }
 }
 </script>

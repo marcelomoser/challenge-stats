@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <ChallengeList :challenges="challenges" :status="status" />
-  </div>
+  <ChallengeList :challenges="challenges" :status="status" />
 </template>
 
 <script>
@@ -46,28 +44,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  *,
-  *::after,
-  *::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI Light' /* Mudar depois */
-  }
-
-  ::selection {
-    background-color: #e66aab;
-    color: #fff
-  }
-
-  html, body {
-    height: 100%
-  }
-
-  a {
-    color: #eb007d;
-    text-decoration: none
-  }
-</style>

@@ -1,3 +1,5 @@
+<style src="./reaction.styl" lang="stylus" scoped></style>
+
 <template>
   <div>
     <div>
@@ -18,10 +20,7 @@ import { reactionContentToEmoji } from '@/lib/filters'
 
 export default {
   props: {
-    reaction: {
-      type: Object,
-      required: true
-    }
+    reaction: { type: Object, required: true }
   },
   computed: {
     user(){

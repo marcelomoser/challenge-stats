@@ -1,5 +1,7 @@
+<style src="./reaction-list.styl" lang="stylus" scoped></style>
+
 <template>
-  <div v-if="reactions && reactions.totalCount > 0">
+  <div class="reactions" v-if="reactions && reactions.totalCount > 0">
     <p class="total-reactions">Este pull request recebeu {{ votes }}</p>
     <p class="unique-reactions">Votantes únicos: {{ uniqueReactions.length }}</p>
     <div>
@@ -9,7 +11,7 @@
         :reaction="reaction" />
     </div>
   </div>
-  <div v-else>Ninguém votou nesse pull request ainda</div>
+  <div class="reactions" v-else>Ninguém votou nesse pull request ainda</div>
 </template>
 
 <script>
@@ -17,14 +19,9 @@ import { uniqueReactionsByUserLogin } from '@/lib/helpers'
 import Reaction from '@/components/reaction/Reaction'
 
 export default {
-  components: {
-    Reaction
-  },
+  components: { Reaction },
   props: {
-    reactions: {
-      type: Object,
-      required: true
-    }
+    reactions: { type: Object, required: true }
   },
   computed: {
     uniqueReactions(){

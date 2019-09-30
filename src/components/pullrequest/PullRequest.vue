@@ -1,14 +1,23 @@
+<style src="./pull-request.styl" lang="stylus" scoped></style>
+
 <template>
-  <div>
-    <img :src="author.avatarUrl" :alt="author.login" height="40" width="40">
-    <p>
-      <a :href="author.url">@{{ author.login }}</a> enviou uma pull
-      request que alterou {{ pullRequest.changedFiles }} arquivos.
-    </p>
-    <div>
-      <ReactionList :reactions="reactions" />
-      Vote nesta pull request <a :href="pullRequest.permalink">clicando aqui</a>
+  <div class="pull-request">
+    <div class="pull-request__details">
+      <img
+        class="pull-request__details__avatar"
+        :src="author.avatarUrl"
+        :alt="author.login"
+        :title="'@' + author.login">
+      <p>
+        <a :href="author.url">@{{ author.login }}</a>
+        enviou sua participação {{ pullRequest.createdAt | toTextFromNow }}.
+      </p>
+      <p class="pull-request__details__vote">
+        Vote nesse pull request
+        <a :href="pullRequest.permalink">clicando aqui</a>.
+      </p>
     </div>
+    <ReactionList :reactions="reactions" />
   </div>
 </template>
 
@@ -16,14 +25,9 @@
 import ReactionList from '@/components/reaction/ReactionList'
 
 export default {
-  components: {
-    ReactionList
-  },
+  components: { ReactionList },
   props: {
-    pullRequest: {
-      type: Object,
-      required: true
-    }
+    pullRequest: { type: Object, required: true }
   },
   computed: {
     author(){
