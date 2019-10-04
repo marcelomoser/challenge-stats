@@ -1,14 +1,15 @@
 <style src="./winner-list.styl" lang="stylus" scoped></style>
 
 <template>
-  <div class="winners-list" v-if="winners && winners.length > 0">
-    <Winner
+  <div v-if="winners.length === 0">Este evento não ainda possui vencedores divulgados</div>
+  <div v-else>
+    <winner
       v-for="winner in winnerlist"
       :key="winner.position"
       :winner="winner"
-      :title="winner.position + 'º colocado'"/>
+      :title="winner.position + 'º colocado'"
+    />
   </div>
-  <div class="winners-list" v-else>Este evento ainda não possui vencedores divulgados</div>
 </template>
 
 <script>

@@ -19,18 +19,18 @@
       </p>
     </div>
     <div class="challenge__winners">
-      <WinnerList :winners="challenge.winners" />
+      <winners :winners="challenge.winners" />
       <PullRequestList :repository="challenge.repository" />
     </div>
   </div>
 </template>
 
 <script>
-import WinnerList from '@/components/winner/WinnerList'
+import Winners from '@/components/winner/Winners'
 import PullRequestList from '@/components/pullrequest/PullRequestList'
 
 export default {
-  components: { WinnerList, PullRequestList },
+  components: { Winners, PullRequestList },
   props: {
     challenge: { type: Object, required: true },
   },
