@@ -1,7 +1,9 @@
 <style src="./winner.styl" lang="stylus" scoped></style>
 
 <template>
-  <a :data-position="winner.position" :href="'https://github.com/' + winner.login">@{{ winner.login }}</a>
+  <a :data-position="winner.position" :href="'https://github.com/' + winner.login">
+    @{{ winner.login }}
+  </a>
 </template>
 
 <script>
