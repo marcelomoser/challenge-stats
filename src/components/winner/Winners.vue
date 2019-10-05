@@ -1,5 +1,3 @@
-<style src="./winner-list.styl" lang="stylus" scoped></style>
-
 <template>
   <div v-if="winners.length === 0">Este evento não ainda possui vencedores divulgados</div>
   <div v-else>
