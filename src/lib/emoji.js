@@ -1,4 +1,4 @@
-export const reactionContentToEmoji = content => {
+export default content => {
   return {
     'THUMBS_UP': '👍',
     'THUMBS_DOWN': '👎',
