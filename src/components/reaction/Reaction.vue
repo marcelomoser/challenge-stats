@@ -1,5 +1,3 @@
-<style src="./reaction.styl" lang="stylus" scoped></style>
-
 <template>
   <div>
     <img
@@ -8,13 +6,14 @@
       :title="reaction.user.login"
     >
     <div>
-      <a :href="reaction.user.url">@{{ reaction.user.login }}</a> reagiu com {{ reaction.content | toEmoji }} {{ reaction.createdAt | toTextFromNow }}
+      <a :href="reaction.user.url">@{{ reaction.user.login }}</a>
+      reagiu com {{ reaction.content | toEmoji }} {{ reaction.createdAt | toTextFromNow }}
     </div>
   </div>
 </template>
 
 <script>
-import { reactionContentToEmoji } from '@/lib/filters'
+import reactionContentToEmoji from '@/lib/emoji'
 
 export default {
   props: {

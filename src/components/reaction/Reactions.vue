@@ -1,0 +1,44 @@
+<template>
+  <div v-if="numberOfReactions === 0">Ninguém votou nesse pull request ainda</div>
+  <div v-else class="reactions">
+    <p
+      class="reactions__counter"
+      title="Nº total de reações no pull request (contabilizando reações duplicadas).">
+      Reações<br>
+      <span>{{ reactions.totalCount }}</span>
+    </p>
+    <p
+      class="reactions__unique__counter"
+      title="Este é o número de reações únicas por usuário.">
+      Reações Únicas<br>
+      <span>{{ uniqueReactions.length }}</span>
+    </p>
+    <div>
+      <reaction
+        v-for="reaction in reactions.nodes"
+        :key="reaction.id"
+        :reaction="reaction"
+      />
+    </div>
+  </div>
+</template>
+
+<script>
+import { uniqueReactionsByUserLogin } from '@/lib/helpers'
+import Reaction from '@/components/reaction/Reaction'
+
+export default {
+  components: { Reaction },
+  props: {
+    reactions: { type: Object, required: true }
+  },
+  computed: {
+    uniqueReactions(){
+      return uniqueReactionsByUserLogin(this.reactions)
+    },
+    numberOfReactions(){
+      return this.reactions.totalCount || 0
+    }
+  }
+}
+</script>
