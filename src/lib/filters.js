@@ -1,9 +1,3 @@
-import dayjs from 'dayjs'
-import ptbr from 'dayjs/locale/pt-br'
-import relativeTime from 'dayjs/plugin/relativeTime'
-
-dayjs.extend(relativeTime)
-
 export const reactionContentToEmoji = content => {
   return {
     'THUMBS_UP': '👍',
@@ -15,8 +9,4 @@ export const reactionContentToEmoji = content => {
     'CONFUSED': '😕',
     'HOORAY': '🎉'
   }[content]
-}
-
-export const formatDate = date => {
-  return dayjs(date).locale(ptbr).fromNow()
 }

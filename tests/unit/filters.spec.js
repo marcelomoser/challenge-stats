@@ -1,13 +1,6 @@
-import { reactionContentToEmoji, formatDate } from "../../src/lib/filters"
+import { reactionContentToEmoji } from "../../src/lib/filters"
 
 describe('Vue Filters', () => {
-  describe('Date & Time', () => {
-    it('should format date from now', () => {
-      const date = new Date()
-      date.setDate(date.getDate() - 2) // menos dois dias
-      expect(formatDate(date)).toBe('há 2 dias')
-    })
-  })
 
   describe('Emoji Filters', () => {
     it('should return the thumbs up emoji when reaction content is "THUMBS_UP"', () => {
