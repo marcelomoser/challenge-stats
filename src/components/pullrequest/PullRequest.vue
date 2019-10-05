@@ -1,31 +1,29 @@
-<style src="./pull-request.styl" lang="stylus" scoped></style>
-
 <template>
   <div class="pull-request">
-    <div class="pull-request__details">
+    <div>
       <img
-        class="pull-request__details__avatar"
+        class="pull-request__user-avatar"
         :src="author.avatarUrl"
         :alt="author.login"
         :title="'@' + author.login">
-      <p>
+      <p class="pull-request__signed">
         <a :href="author.url">@{{ author.login }}</a>
         enviou sua participação {{ pullRequest.createdAt | toTextFromNow }}.
       </p>
-      <p class="pull-request__details__vote">
+      <p class="pull-request__vote">
         Vote nesse pull request
         <a :href="pullRequest.permalink">clicando aqui</a>.
       </p>
     </div>
-    <ReactionList :reactions="reactions" />
+    <reactions :reactions="reactions" />
   </div>
 </template>
 
 <script>
-import ReactionList from '@/components/reaction/ReactionList'
+import Reactions from '@/components/reaction/Reactions'
 
 export default {
-  components: { ReactionList },
+  components: { Reactions },
   props: {
     pullRequest: { type: Object, required: true }
   },

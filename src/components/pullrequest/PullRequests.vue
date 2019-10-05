@@ -1,13 +1,12 @@
-<style src="./pull-request-list.styl" lang="stylus" scoped></style>
-
 <template>
-  <div class="pull-requests" v-if="pullRequests && pullRequests.totalCount > 0">
-    <PullRequest
+  <div v-if="numberOfPullRequests === 0">Nenhum pull request foi enviado para essa edição do evento ainda</div>
+  <div v-else>
+    <pull-request
       v-for="pullRequest in pullRequests.nodes"
       :key="pullRequest.id"
-      :pullRequest="pullRequest" />
+      :pullRequest="pullRequest"
+    />
   </div>
-  <div class="pull-requests" v-else>Nenhuma pull request foi enviada para essa edição do evento</div>
 </template>
 
 <script>
@@ -20,7 +19,11 @@ export default {
   },
   computed: {
     pullRequests(){
-      return this.repository.pullRequests
+      const prs = this.repository.pullRequests
+      return prs.nodes || []
+    },
+    numberOfPullRequests(){
+      return this.pullRequests.length || 0
     }
   }
 }
