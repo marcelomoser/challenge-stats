@@ -2,6 +2,7 @@
   <ChallengeList :challenges="challenges" :status="status" />
 </template>
 
+
 <script>
 import challengesJson from '@/challenges.json'
 import { fetchPullRequestByLabel } from '@/lib/github'
@@ -44,3 +45,17 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+    font-family: 'Comfortaa', cursive;
+    margin: 0;
+    padding: 0;
+  }
+  html, body {
+    height: 100%
+  }
+</style>
